@@ -86,6 +86,8 @@ function getSessionKey(ctx) {
 }
 ```
 
+Default implementation of `getChatSessionKey`:
+
 ```js
 function getChatSessionKey(ctx) {
   if (!ctx.from || !ctx.chat) {
