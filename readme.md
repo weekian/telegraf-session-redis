@@ -2,10 +2,6 @@
 [![NPM Version](https://img.shields.io/npm/v/telegraf-session-redis.svg?style=flat-square)](https://www.npmjs.com/package/telegraf-session-redis)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 
-# Additions in this fork
-
-Addition of chatSession to implement chat-wide session to store preferences for the chat in addition to user-based session for each user
-
 # Redis session middleware for Telegraf
 
 Redis powered session middleware for [Telegraf](https://github.com/telegraf/telegraf).
@@ -62,7 +58,7 @@ redisSession.saveSession(key, session)
 
 ## API
 
-### Options (Updated)
+### Options
 
 * `store`:
   * `host`: Redis host (default: *127.0.0.1*)
@@ -73,7 +69,6 @@ redisSession.saveSession(key, session)
 * `property`: context property name (default: `session`)
 * `ttl`: session ttl in seconds (default: forever)
 * `getSessionKey`: session key resolver function `(ctx) => any`)
-* `getChatSessionKey`: chat session key resolver function `(ctx) => any`)
 
 Default implementation of `getSessionKey`:
 
@@ -83,15 +78,6 @@ function getSessionKey(ctx) {
     return
   }
   return `${ctx.from.id}:${ctx.chat.id}`
-}
-```
-
-```js
-function getChatSessionKey(ctx) {
-  if (!ctx.from || !ctx.chat) {
-    return
-  }
-  return `${ctx.chat.id}`
 }
 ```
 
