@@ -36,10 +36,7 @@ bot.use(session.middleware())
 bot.on('text', (ctx) => {
   ctx.session.counter = ctx.session.counter || 0
   ctx.session.counter++
-  ctx.chatSession.counter = ctx.chatSession.counter || 0
-  ctx.chatSession.counter++
   console.log('Session', ctx.session)
-  console.log('chatSession', ctx.chatSession)
 })
 
 bot.startPolling()
@@ -107,7 +104,6 @@ To destroy a session simply set it to `null`.
 ```js
 bot.on('text', (ctx) => {
   ctx.session = null
-  ctx.chatSession = null
 })
 
 ```
